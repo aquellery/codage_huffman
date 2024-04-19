@@ -6,7 +6,10 @@
     class Affichage
     {
         public :
+        //constructeur
         Affichage();
+
+        //méthodes
         void afficher_liste(std::list<char> liste);
         void afficher_string(std::string str);
 

@@ -5,8 +5,11 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
+#include <utility>
 #include "alphabet.hpp"
 #include "affichage.hpp"
+#include "arbre.hpp"
 
 
 int main() {
@@ -23,6 +26,16 @@ int main() {
   alphabet.set_ordre();
   std::list<char> caracteres_ordonnes=alphabet.get_ordre();
   aff.afficher_liste(caracteres_ordonnes);
+
+  //étape 4 : on créé les noeuds associé à chaque couple de caractère-fréquence
+  std::vector<std::pair<char, int>> couple_car_freq=alphabet.get_couple_caractere_frequence();
+  std::vector<Noeud*> liste_noeuds=Noeud::creer_noeuds(couple_car_freq);
+  for (Noeud* noeud : liste_noeuds){
+    noeud->afficher_noeud();
+  }
+
+  Noeud* racine=construire_arbre_huffman(liste_noeuds);
+  racine->afficher_noeud();
 
   return 0;
 }

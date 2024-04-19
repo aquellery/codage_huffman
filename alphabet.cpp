@@ -98,7 +98,7 @@ void Alphabet::set_ordre(){
     for (const auto& c : liste_caracteres) {
         std::cout << c.first << " - " << c.second << std::endl;
     }
-    
+    this->couple_caractere_frequence=liste_caracteres;    
     // On ajoute maintenant chaque caractère dans une liste dans le bon ordre
     std::list<char> caracteres_ordonnes;
     for (const auto& p : liste_caracteres) {
@@ -106,6 +106,10 @@ void Alphabet::set_ordre(){
     }
     this->caracteres_ordonnes=caracteres_ordonnes;
 
+}
+
+std::vector<std::pair<char, int>> Alphabet::get_couple_caractere_frequence(){
+    return this->couple_caractere_frequence;
 }
 
 std::list<char> Alphabet::get_ordre(){

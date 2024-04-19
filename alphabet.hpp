@@ -18,17 +18,17 @@
         void set_frequence();
         std::unordered_map<char, int> get_frequence();
         void afficher_frequence();
+        std::vector<std::pair<char, int>> get_couple_caractere_frequence();
 
         void set_ordre();
         std::list<char> get_ordre();
-
-
 
         private :
         std::string fichier;
         std::list<char>caracteres{};
         std::unordered_map<char, int> frequence_caracteres;
         std::list<char> caracteres_ordonnes{};
+        std::vector<std::pair<char, int>> couple_caractere_frequence;
 
     };
 #endif
