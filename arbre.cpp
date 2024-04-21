@@ -35,12 +35,11 @@ Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
         Noeud* gauche = liste_noeuds[0];
         Noeud* droit = liste_noeuds[1];
         //On supprime les deux premiers éléments de la liste
-        liste_noeuds.erase(liste_noeuds.begin(), liste_noeuds.begin() + 1);
+        liste_noeuds.erase(liste_noeuds.begin(), liste_noeuds.begin() + 2);
         //On crée un nouveau noeud qui aura comme fils gauche "gauche" et comme fils droit "droit"
         Noeud* noeud_parent=new Noeud('#', gauche->frequence + droit->frequence);
         noeud_parent->gauche=gauche;
         noeud_parent->droit=droit;
-        noeud_parent->frequence=gauche->frequence + droit->frequence;
 
         // Ajouter le nouveau noeud à la liste
         liste_noeuds.push_back(noeud_parent);
