@@ -80,7 +80,6 @@ void Alphabet::afficher_frequence(){
         }
 }
 
-
 // Fonction qui permet de trier les caractères par ordre de fréquence et par ordre codage des caractères ASCII
 void Alphabet::set_ordre(){
     // on utilise un vecteur de paires à la place de la map (dictionnaire non ordonné)
@@ -94,10 +93,6 @@ void Alphabet::set_ordre(){
             return a.first < b.first; //.first correspond au caractère, on trie donc par ordre ASCII
         }
     });
-    // affichage des caractères associé à leur fréquence
-    for (const auto& c : liste_caracteres) {
-        std::cout << c.first << " - " << c.second << std::endl;
-    }
     this->couple_caractere_frequence=liste_caracteres;    
     // On ajoute maintenant chaque caractère dans une liste dans le bon ordre
     std::list<char> caracteres_ordonnes;

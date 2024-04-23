@@ -3,6 +3,7 @@
 #include <vector>
 #include <utility>
 #include <algorithm>
+#include <unordered_map>
 
 bool Noeud::feuille(){
     return (gauche==nullptr && droit==nullptr);
@@ -20,13 +21,10 @@ std::vector<Noeud*> Noeud::creer_noeuds(const std::vector<std::pair<char, int>>&
 
 void Noeud::afficher_noeud(){
     std::string result;
-    result+="Caractere : ";
     result+=this->caractere;
-    result+="\tFrequence : ";
+    result+=" - frequence : ";
     result+=std::to_string(this->frequence);
-
     std::cout << result << std::endl;
-    
 }
 
 Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
@@ -46,4 +44,14 @@ Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
     }
     // Quand il ne reste plus qu'un noeud dans la liste : c'est la racine de l'arbre
     return liste_noeuds[0];
+}
+
+void parcours_profondeur(Noeud* noeud, std::string code_binaire, std::unordered_map<char, std::string>& codes_binaires){
+    if (noeud->feuille()){
+        codes_binaires[noeud->caractere]=code_binaire;
+    }
+    else{
+        parcours_profondeur(noeud->gauche, code_binaire+"0", codes_binaires);
+        parcours_profondeur(noeud->droit, code_binaire+"1", codes_binaires);
+    }
 }
