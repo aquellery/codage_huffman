@@ -1,13 +1,12 @@
+// Axelle ROY
+
+// PROJ631 : Projet algorithmique
+// Codage Huffman
+
 #include "alphabet.hpp"
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <list>
-#include <vector>
-#include <algorithm>
 
 Alphabet::Alphabet(const std::string nomfichier):fichier(nomfichier) {
-    std::cout<<"Creation de l'alphabet en cours"<<std::endl;
+    std::cout<<"Creation de l'alphabet en cours : "<<std::endl;
 }
 
 std::string Alphabet::get_fichier() const  {
@@ -109,4 +108,35 @@ std::vector<std::pair<char, int>> Alphabet::get_couple_caractere_frequence(){
 
 std::list<char> Alphabet::get_ordre(){
     return this ->caracteres_ordonnes;
+}
+
+// Affichage
+void Alphabet::afficher_liste(std::list<char> liste){
+    std::string result;
+    if (!liste.empty()) {
+        for (const auto& element : liste){
+            result+=element;
+            result+=" ";
+        }
+    std::cout << result << std::endl;
+    }
+}
+
+
+void Alphabet::enregistrer_alphabet(std::string nom_fichier){
+    std::cout << nom_fichier << std::endl;
+    std::ofstream fichier("donnees/alphabet/"+nom_fichier+"_freq.txt");
+
+    if (!fichier.is_open()){
+        std::cerr << "Probleme lors de l'ouverture du fichier pour l'enregistrement de l'alphabet" << std::endl;
+    }
+
+    // enregistrement du nombre de caractère dans le fichier
+    fichier << couple_caractere_frequence.size()<< std::endl;
+
+    // enregistrement de chaque couple caractère/fréquence :
+    for (const auto& paire : couple_caractere_frequence) {
+        fichier << paire.first << " " << paire.second << std::endl;
+    }
+    fichier.close();
 }

@@ -1,7 +1,15 @@
+// Axelle ROY
+
+// PROJ631 : Projet algorithmique
+// Codage Huffman
+
+#include <iostream>
+#include <fstream>
 #include <string>
 #include <list>
-#include <unordered_map>
 #include <vector>
+#include <algorithm>
+#include <unordered_map>
 
 #ifndef __ALPHABET__
     #define __ALPHABET__
@@ -22,6 +30,10 @@
 
         void set_ordre();
         std::list<char> get_ordre();
+
+        void afficher_liste(std::list<char> liste);
+
+        void enregistrer_alphabet(std::string nom_fichier);
 
         private :
         std::string fichier;
