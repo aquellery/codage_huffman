@@ -50,6 +50,7 @@ Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
             return a->frequence > b->frequence;
         });
         // affichage test
+        /*
         std::cout<<"Noeud gauche : " << std::endl;
         gauche->afficher_noeud();
         std::cout<< "Noeud droit : " << std::endl;
@@ -61,6 +62,7 @@ Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
             noeud->afficher_noeud();
         }
         std::cout << "-------------" <<std::endl;
+        */
     }
     // Quand il ne reste plus qu'un noeud dans la liste : c'est la racine de l'arbre
     return liste_noeuds[0];

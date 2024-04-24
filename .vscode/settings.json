@@ -104,7 +104,8 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "list": "cpp",
-    "set": "cpp"
+    "set": "cpp",
+    "bitset": "cpp"
   },
   "C_Cpp.errorSquiggles": "disabled"
 }
