@@ -63,3 +63,30 @@ void Compression::stockage_fichier_compresse(const std::string& codage) {
     fichier.close();
 }
 
+double Compression::calcul_taux_compression(){
+    std::ifstream fichier_initial(nom_fichier);
+    std::ifstream fichier_comp(nom_fichier_comp);
+    if (!fichier_initial.is_open() |!fichier_comp.is_open()) {
+        std::cerr << "Probleme lors de l'ouverture d'un des fichier" << std::endl;
+        return -1;
+    }
+
+    // taille du fichier initial :
+    fichier_initial.seekg(0, std::ios::end);
+    std::streampos taille_initiale = fichier_initial.tellg();
+    //std::cout<<"Taille initiale : "<< taille_initiale<<std::endl;
+    fichier_initial.close();
+    // taille du fichier compressé :
+    fichier_comp.seekg(0, std::ios::end);
+    std::streampos taille_comp = fichier_comp.tellg();
+    //std::cout<<"Taille compressee : "<< taille_comp<<std::endl;
+    fichier_comp.close();
+
+    // conversion des tailles des fichiers pour faire le calcul
+    double taille_initiale_float = static_cast<double>(taille_initiale);
+    double taille_comp_float = static_cast<double>(taille_comp);
+    
+    // calcul du taux : 
+    float taux_compression=1-(taille_comp_float/taille_initiale_float);
+    return taux_compression;  
+}
