@@ -89,7 +89,7 @@ void Alphabet::set_ordre(){
         if (a.second != b.second) { //.second correspond à la fréquence
             return a.second > b.second; // on trie donc par ordre croissant de fréquence
         } else {
-            return a.first < b.first; //.first correspond au caractère, on trie donc par ordre ASCII
+            return a.first > b.first; //.first correspond au caractère, on trie donc par ordre ASCII
         }
     });
     this->couple_caractere_frequence=liste_caracteres;    
@@ -124,7 +124,6 @@ void Alphabet::afficher_liste(std::list<char> liste){
 
 
 void Alphabet::enregistrer_alphabet(std::string nom_fichier){
-    std::cout << nom_fichier << std::endl;
     std::ofstream fichier("donnees/alphabet/"+nom_fichier+"_freq.txt");
 
     if (!fichier.is_open()){

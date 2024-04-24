@@ -25,6 +25,7 @@ int main(int argc, char *argv[]) {
   alphabet.afficher_liste(caracteres_ordonnes);
 
   // étape 4 : on enregistre l'alphabet dans un fichier txt
+  std::cout << "Enregistrement de l'alphabet en cours" <<std::endl;
   alphabet.enregistrer_alphabet(nom_fichier);
 
   // étape 5 : on créé les noeuds associé à chaque couple de caractère-fréquence

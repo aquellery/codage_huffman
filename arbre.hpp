@@ -1,9 +1,15 @@
+// Axelle ROY
+
+// PROJ631 : Projet algorithmique
+// Codage Huffman
+
 #include <string>
 #include <list>
 #include <vector>
 #include <utility>
 #include <iostream>
 #include <unordered_map>
+#include <algorithm>
 
 #ifndef __ARBRE__
     #define __ARBRE__
@@ -21,7 +27,6 @@
         static std::vector<Noeud*> creer_noeuds(const std::vector<std::pair<char, int>>& couple);
 
         void afficher_noeud();
-        //void parcours_profondeur(Noeud* noeud, std::string code_binaire, std::unordered_map<char, std::string>& codes_binaires);
 
     };
 
