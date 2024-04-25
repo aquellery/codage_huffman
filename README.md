@@ -45,4 +45,6 @@ La classe comprend 3 méthodes principales qui permettent de gérer l'aspect de 
 - set_codage_fichier : cette méthode va parcourir chaque caractère du fichier (de la chaine de caractère obtenue avant) et lui associé son codage d'Huffman.
 - stockage_fichier_compresse : cette dernière méthode permet de créer un nouveau fichier .bin et d'y stocker le texte codé.
 
-La méthode taux_compression permet elle de déterminer le taux de compression obtenu grâce au codage d'Huffman.
+Vient ensuite deux autres méthodes liées au gain de place :
+- taux_compression : elle permet de déterminer le taux de compression obtenu grâce au codage d'Huffman
+- calcul_nombre_moyen_bits_stockage : elle permet de calculer le nombre de bits du fichier compressé et ainsi d'obtenir le nombre moyen de bits de stockage utilisé par un caractère dans le texte compressé. 

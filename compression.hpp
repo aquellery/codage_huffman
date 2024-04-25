@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include <bitset>
 #include <ios>
+#include <vector>
 
 #ifndef __COMPRESSION__
     #define __COMPRESSION__
@@ -27,11 +28,14 @@
 
         double calcul_taux_compression();
 
+        double calcul_nombre_moyen_bits_stockage(std::vector<std::pair<char, int>> couple_caractere_frequence);
+
         private :
         std::string nom_fichier;
         std::string contenu_fichier;
         std::string codage_fichier;
         std::string nom_fichier_comp;
+
     };
 
 

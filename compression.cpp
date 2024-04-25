@@ -66,7 +66,7 @@ void Compression::stockage_fichier_compresse(const std::string& codage) {
 double Compression::calcul_taux_compression(){
     std::ifstream fichier_initial(nom_fichier);
     std::ifstream fichier_comp(nom_fichier_comp);
-    if (!fichier_initial.is_open() |!fichier_comp.is_open()) {
+    if (!fichier_initial.is_open() |!fichier_comp.is_open()) { // |= ou
         std::cerr << "Probleme lors de l'ouverture d'un des fichier" << std::endl;
         return -1;
     }
@@ -89,4 +89,32 @@ double Compression::calcul_taux_compression(){
     // calcul du taux : 
     float taux_compression=1-(taille_comp_float/taille_initiale_float);
     return taux_compression;  
+}
+
+double Compression::calcul_nombre_moyen_bits_stockage(std::vector<std::pair<char, int>> couple_caractere_frequence){
+    //ouverture du fichier en mode binaire
+    std::ifstream fichier_comp(nom_fichier_comp, std::ios::binary);
+    if (!fichier_comp.is_open()) {
+        std::cerr << "Probleme lors de l'ouverture du fichier compresse" << std::endl;
+        return -1;
+    }
+
+    // récupération du nombre de bits dans le fichier compressé
+    int bits_fichier_comp=0;
+    char c;
+    while (fichier_comp.get(c)) {
+        bits_fichier_comp+=8; // chaque caractère contient 8 bits puisque le fichier a été comprimé octet par octet
+    }
+    
+    double moyenne_bits_par_caractere_compresses=0;
+    for (const auto& couple : couple_caractere_frequence) {
+        moyenne_bits_par_caractere_compresses+=(couple.second*8); //chaque caractère est codé sur 8 bits donc la fréquence est multipliée par 8
+    }
+    // on peut maintenant diviser par le nombre de bits présents dans le fichier compressé pour obtenir la moyenne.
+    moyenne_bits_par_caractere_compresses/=bits_fichier_comp;
+
+    // fermeture du fichier
+    fichier_comp.close();
+
+    return moyenne_bits_par_caractere_compresses;
 }

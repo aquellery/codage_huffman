@@ -67,6 +67,8 @@ int main(int argc, char *argv[]) {
   std::cout<<"Taux de compression : " << taux_compression*100 << "%" << std::endl;
 
   // étape 10 : on détermine le nombre moyen de bits de stockage d’un caractère du texte compressé
+  double nombre_moyen = comp.calcul_nombre_moyen_bits_stockage(couple_car_freq);
+  std::cout <<"Nombre moyen de bits de stockage d'un caractere du texte compresse : "<< nombre_moyen << std::endl;
 
 
   return 0;
