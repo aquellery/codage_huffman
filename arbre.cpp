@@ -28,8 +28,7 @@ void Noeud::afficher_noeud(){
 }
 
 Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
-    
-    
+    //std::cout << "Affichage de l'arbre en cours : " << std::endl;
     //On va parcourir la liste des noeuds pour les placer dans l'arbre de Huffman
     while( liste_noeuds.size()>1){
         // le noeud droit correspond au dernier noeud et le gauche à l'avant dernier
@@ -57,7 +56,7 @@ Noeud* construire_arbre_huffman(std::vector<Noeud*> & liste_noeuds){
         droit->afficher_noeud();
         std::cout <<"Noeud parent : " <<std::endl;
         noeud_parent->afficher_noeud();
-        std::cout <<"Liste de nouveau triée" <<std::endl;
+        std::cout <<"Liste de nouveau triee : " <<std::endl;
         for (Noeud* noeud : liste_noeuds){
             noeud->afficher_noeud();
         }
